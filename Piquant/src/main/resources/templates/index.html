@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{css/index.css}">
+   
+    <title>Home</title>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="header-line-up">
+                <div class="header-line-up-left">
+                    <p>Siguenos</p>
+                    <img th:src="@{img/icons/ico_twiter.svg}">
+                    <img th:src="@{img/icons/ico_insta.svg}">
+                    <img th:src="@{img/icons/ico_fb.svg}">
+            
+                </div>
+                <div class="header-line-up-right">
+                     <a th:href="@{/carrito}">
+                            <p>Carrito</p>
+                        </a>
+                    <img th:src="@{img/icons/ico-carrito.png}">
+                </div>
+            </div>
+            <hr>
+            <div class="header-body">
+                <div class="header-banner-navbar">
+                    <div class="header-banner-navbar-left">
+                        <img src="img/icons/logo.png">
+                         <a th:href="@{/}">
+                            <p>Inicio</p>
+                        </a>
+                        <a th:href="@{/menu}">
+                            <p>Menu</p>
+                        </a>
+                    </div>
+                    <div class="header-banner-navbar-right">
+                        <img src="img/icons/ico_user.svg">
+                         <a th:href="@{/formularioIngresar}">
+                            <p>Iniciar sesion</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-banner">
+                    <div class="header-banner-text">
+                        <p class="header-banner-title">KNOW YOUR FOOD HERE</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Adipisci, pariatur aliquid nihil doloribus nesciunt, totam tenetur, in accusantium placeat quo voluptatum non eaque aspernatur nostrum!
+                            Numquam veniam molestiae magnam voluptate.</p>
+                
+                    </div>
+                    <img src="img/burger-banner-draw.png">
+                </div>
+            </div>
+        </div>
+    </header>    
+        <div class="container-body-par">
+            
+            <div class="container-body-index">
+            
+                    <div class="body-index">
+                        <img src="img/food/burger.jpg">
+                        <h1 class="title">Hamburguesa doble carne</h1>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel, saepe delectus cum laudantium quidem doloribus placeat hic laboriosam reprehenderit. Blanditiis quasi alias animi consectetur enim mollitia ipsa doloremque impedit eius.</p>
+                    </div>
+                    <div class="body-index">
+                        <img src="img/food/pizza.jpg">
+                        <h1 class="title">Pizza de pepperoni</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dicta. Ut accusamus perspiciatis, nemo in, placeat ea enim quisquam distinctio saepe recusandae magnam sequi. Quasi ipsum eaque aperiam unde iste.</p>
+                    </div>
+                    <div class="body-index">
+                        <img src="img/food/ensalada.jpg">
+                        <h1 class="title">Ensalada Vegana X1</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, dicta. Ut accusamus perspiciatis, nemo in, placeat ea enim quisquam distinctio saepe recusandae magnam sequi. Quasi ipsum eaque aperiam unde iste.</p>
+                    </div>
+            </div>
+            <div class="container-gallery">
+                <div class="container-gallery-title">
+                    <p>Galeria de arte</p>
+                </div>
+                <div class="container-gallery-child">
+                    <div class="gallery-card">
+                        <img src="img/food/pizza.jpg" alt="">
+            
+                    </div>
+                    <div class="gallery-card">
+                        <img src="img/food/pizza.jpg" alt="">
+                    </div>
+                    <div class="gallery-card">
+                       <img src="img/food/pizza.jpg" alt="">
+                    </div>
+                    <div class="gallery-card">
+                        <img src="img/food/pizza.jpg" alt="">
+                    </div>
+                    <div class="gallery-card">
+                       <img src="img/food/pizza.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="container-body-aboutus">
+                <div class="body-aboutus">
+                    <h1 class="title">ACERCA DE PIQUANT</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi totam dolore expedita vel corrupti nostrum quisquam. Voluptatem consequuntur impedit in minima sed, officia beatae aut molestias voluptatum quibusdam nulla quod.</p>
+                </div>
+                <div class="body-aboutus">
+                    <img src="img/aboutus.jpg">
+                </div>
+            </div>
+            <div class="container-contact">
+                <div class="container-contact-child">
+                    <div class="container-contact-info">
+            
+                            <h1 class="title">INFORMACIÓN DE CONTACTO</h1>
+            
+                        <div class="contact-item">
+                            <div>
+                                <p>Calle 10 y 11 Sector Quinta Veléz</p>
+                                <P>605-1234567</P>
+                            </div>
+                            <div>
+                                <p>piquant@outlook.com</p>
+                            </div>
+                        </div>
+            
+                    </div>
+                    <div class="container-horario">
+                        <div class="container-horario-child">
+                            <p>HORARIO DE APERTURA</p>
+                            <ul>
+                                <li>Lunes .................... 8:00 - 20:00</li>
+                                <li>Martes .................... 8:00 - 20:00</li>
+                                <li>Miercoles .................... 8:00 - 20:00</li>
+                                <li>Jueves .................... 8:00 - 20:00</li>
+                                <li>Viernes .................... 8:00 - 18:00</li>
+                                <li>Sabado .................... 14:00 - 20:00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container-footer">
+                <div class="container-footer-child">
+                    <div class="footer-item">
+                        <img src="img/icons/logo.png">
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, totam corporis ullam
+                        </p>
+                        <div class="footer-container-list">
+                            <div class="footer-list">
+                                <img src="img/icons/mail.png" alt="">
+                                <p>piquant@outlook.com</p>
+                            </div>
+                            <div class="footer-list">
+                                <img src="img/icons/phone.png" alt="">
+                                <p>605-1234567</p>
+                            </div>
+                            <div class="footer-list">
+                                <img src="img/icons/location.png" alt="">
+                                <p>Calle 10 y 11 Sector Quinta Veléz</p>
+                            </div>   
+                        </div>
+                    </div>
+                    <div class="footer-item">
+                        <h1 class="title">Instagram</h1>
+                       <a href=""></a>
+                    </div>
+                    <div class="footer-item">
+                        <h1 class="title">Facebook</h1>
+                        <a href=""></a>
+                    </div>
+                    
+                </div>
+                <div class="footer-copy">
+                    <hr>
+                    <p> © 2021. Déchets productions, All Rights Reserved</p>
+                </div>
+            </div>
+        </footer>
+</body>
+</html>

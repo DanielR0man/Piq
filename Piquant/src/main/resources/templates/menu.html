@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/footer.css">
+    
+    <title>Menu Piquant</title>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="header-line-up">
+                <div class="header-line-up-left">
+                    <p>Siguenos</p>
+                    <img src="img/icons/ico_twiter.svg">
+                    <img src="img/icons/ico_insta.svg">
+                    <img src="img/icons/ico_fb.svg">
+            
+                </div>
+                <div class="header-line-up-right">
+                     <a th:href="@{/carrito}">
+                            <p>Carrito</p>
+                        </a>
+                    <img src="img/icons/ico-carrito.png">
+                </div>
+            </div>
+            <hr>
+            <div class="header-body">
+                <div class="header-banner-navbar">
+                    <div class="header-banner-navbar-left">
+                        <img src="img/icons/logo.png">
+                           <a th:href="@{/}">
+                            <p>Inicio</p>
+                        </a>
+                         <a th:href="@{/menu}">
+                            <p>Menu</p>
+                        </a>
+                    </div>
+                    <div class="header-banner-navbar-right">
+                        <img src="img/icons/ico_user.svg">
+                         <a th:href="@{/formularioIngresar}">
+                            <p>Iniciar sesion</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="header-banner">
+                    <div class="header-banner-text">
+                        <p class="header-banner-title">NUESTRO MENU</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Adipisci, pariatur aliquid nihil doloribus nesciunt, totam tenetur, in accusantium placeat quo voluptatum non eaque aspernatur nostrum!
+                            Numquam veniam molestiae magnam voluptate.</p>
+                
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </header>    
+
+    <div class="menu-container">
+        <div class="slider-container">
+            <div class="slider-container-child">
+                <div class="slider-items">
+                    <p>FILTRAR POR</p>
+                    <input type="button" value="Tipo 1">
+                    <input type="button" value="Tipo 2">
+                    <input type="button" value="Tipo 3">
+                    <input type="button" value="Tipo 4">
+                
+                </div>
+                <hr>
+            </div>
+            
+        </div>
+        <div class="menu">
+            <div class="menu-row">
+                <div th:each="prod:${productos}" th:style="'background-image:url(' + ${prod.img}+ ')'"  class="menu-item">
+                    <button onClick="window.alert('✔ Producto añadido al carrito ');">Añadir al carrito</button> 
+                    <p th:text="${prod.nombre}"></p>
+                    <p th:text="${prod.descripcion}"></p>
+                    <p th:text="${prod.valor}"></p>
+                </div>
+
+            </div>
+
+           
+
+            
+
+            
+        </div>
+
+        
+    </div>
+
+
+
+
+
+    <footer>
+        <div class="container-footer">
+            <div class="container-footer-child">
+                <div class="footer-item">
+                    <img src="img/icons/logo.png">
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, totam corporis ullam
+                    </p>
+                    <div class="footer-container-list">
+                        <div class="footer-list">
+                            <img src="img/icons/mail.png" alt="">
+                            <p>piquant@outlook.com</p>
+                        </div>
+                        <div class="footer-list">
+                            <img src="img/icons/phone.png" alt="">
+                            <p>605-1234567</p>
+                        </div>
+                        <div class="footer-list">
+                            <img src="img/icons/location.png" alt="">
+                            <p>Calle 10 y 11 Sector Quinta Veléz</p>
+                        </div>   
+                    </div>
+                </div>
+                <div class="footer-item">
+                    <h1 class="title">Instagram</h1>
+                   <a href=""></a>
+                </div>
+                <div class="footer-item">
+                    <h1 class="title">Facebook</h1>
+                    <a href=""></a>
+                </div>
+                
+            </div>
+            <div class="footer-copy">
+                <hr>
+                <p> © 2021. Déchets productions, All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>
