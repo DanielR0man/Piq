@@ -52,7 +52,7 @@
 	<div id="container">
 		<h1>&bull; Registro de usuario &bull;</h1>
 
-		<form th:action="@{/formLogin/insertar}" th:object="${cliente}"
+		<form th:action="@{/register/save}" th:object="${cliente}"
 			method="post" id="contact_form">
 			<div class="name">
 				<label for="name"></label> <input th:field="*{nombre}" type="text"

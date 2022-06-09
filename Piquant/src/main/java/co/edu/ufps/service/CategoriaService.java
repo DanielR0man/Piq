@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import co.edu.ufps.model.Categoria;
 import co.edu.ufps.repository.CategoriaRepo;
+import co.edu.ufps.service.interfac.ICategoriaService;
 
 @Service
 public class CategoriaService implements ICategoriaService{
@@ -39,5 +40,7 @@ public class CategoriaService implements ICategoriaService{
 		categoRepo.deleteById(cat);
 		
 	}
+	
+	
 
 }

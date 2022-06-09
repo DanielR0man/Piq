@@ -1,6 +1,8 @@
 package co.edu.ufps.controller;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,10 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import co.edu.ufps.model.Authority;
 import co.edu.ufps.model.Cliente;
 import co.edu.ufps.model.Direccion;
-import co.edu.ufps.service.IClienteService;
-import co.edu.ufps.service.IDireccionService;
+import co.edu.ufps.service.interfac.IAuthorityService;
+import co.edu.ufps.service.interfac.IClienteService;
+import co.edu.ufps.service.interfac.IDireccionService;
 
 
 @Controller
@@ -26,51 +31,25 @@ public class ClienteController {
 	@Autowired
 	private IDireccionService direccionService;
 	
-
 	
-	@GetMapping("/formLogin")
-	public String registrarCliente(Model model) {
-		Cliente cliente= new Cliente();	
-		Direccion direccion = new Direccion();
-		model.addAttribute(cliente);
-		model.addAttribute(direccion);
-		return "registro";
-	}
+	@Autowired
+	private IAuthorityService authorityservice;
 	
-	@PostMapping("/formLogin/insertar")
-	public String registrarCliente(@ModelAttribute Cliente cliente, @ModelAttribute Direccion direccion) {
+	@PostMapping("/register/save")
+	public String registerSave(@ModelAttribute Cliente cliente, @ModelAttribute Direccion direccion) {
 		direccionService.insertar(direccion);
 		cliente.setDireccion(direccion);
+		Set<Authority>authoritys=new HashSet();
+		Authority authority= authorityservice.findAuthority(2l);
+		authoritys.add(authority);
+		System.err.println(authoritys.toString());
+		cliente.setAuthority(authoritys);
 		clienteService.insertar(cliente);
 		return "redirect:/";
 	}
 	
-	@PostMapping("/formularioIngresar/login")
-	public String login(@ModelAttribute Cliente cliente) {
-		
-		List<Cliente>clientes= clienteService.findAll();
-		System.out.println(cliente.getCorreo() + cliente.getClave());
-		if(cliente.getCorreo().equals("admin") && cliente.getClave().equals("123"))
-		{
-			return "redirect:/admincate";
-		}
-		
-		for (Cliente c : clientes) {
-			System.out.println(c.toString());
-			if(c.getCorreo().equals(cliente.getCorreo()) && c.getClave().equals(cliente.getClave())  ) {
-				return "redirect:/";
-			}
-		}
-		
-		return "redirect:/formularioIngresar";
-	}
 	
-	@GetMapping("/formularioIngresar")
-	public String formLogin(Model model) {
-		Cliente cliente= new Cliente();
-		model.addAttribute("cliente",cliente);
-		return "login";
-	}
+	
 	
 	
 	

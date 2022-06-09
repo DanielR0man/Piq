@@ -1,11 +1,15 @@
 package co.edu.ufps.model;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -33,11 +37,58 @@ public class Cliente {
 	private String clave;
 	
 	private String celular;
+	
+	private boolean activo;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name="authorities_users",
+	joinColumns=@JoinColumn(name="usuario_id"),
+	inverseJoinColumns=@JoinColumn(name="authority_id"))
+	private Set<Authority> authority;
 
+	
 
 	public Cliente() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+
+	public List<Compra> getCompras() {
+		return compras;
+	}
+
+
+	public void setCompras(List<Compra> compras) {
+		this.compras = compras;
+	}
+
+
+
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+
+
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
+
+
+
+	public Set<Authority> getAuthority() {
+		return authority;
+	}
+
+
+
+
+	public void setAuthority(Set<Authority> authority) {
+		this.authority = authority;
 	}
 
 
@@ -55,6 +106,9 @@ public class Cliente {
 		this.celular = celular;
 	}
 
+
+
+	
 
 
 	public String getDocumento() {

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import co.edu.ufps.model.Producto;
 import co.edu.ufps.repository.ProductoRepo;
+import co.edu.ufps.service.interfac.IProductoService;
 
 @Service
 public class ProductoService implements IProductoService{

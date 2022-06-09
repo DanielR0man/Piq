@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" th:href="@{css/admincat.css}">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{css/admincat.css}">
 
-<link rel="stylesheet" th:href="@{css/footer.css}">
+	<link rel="stylesheet" th:href="@{css/footer.css}">
 
-<!-- Boxicons CDN Link -->
-<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'
-	rel='stylesheet'>
-<link rel="stylesheet" th:href="@{css/paneladmin.css}">
+	<!-- Boxicons CDN Link -->
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" th:href="@{css/paneladmin.css}">
 
 
-<title>Administración de categorias</title>
+	<title>Administración de categorias</title>
 </head>
+
 <body>
 	<header>
 		<div class="header-container">
 			<div class="header-line-up">
-				
-				
+
+
 			</div>
 			<hr>
 			<div class="header-body">
 				<div class="header-banner-navbar">
 					<div class="header-banner-navbar-left">
 						<img src="img/icons/logo.png">
-						 <a th:href="@{/}">
-                            <p>Inicio</p>
-                        </a>
-						
+						<a th:href="@{/}">
+							<p>Inicio</p>
+						</a>
+
 					</div>
 					<div class="header-banner-navbar-right">
 						<img src="img/icons/ico_user.svg">
@@ -55,25 +56,23 @@
 
 			<li><a th:href="@{/adminproduc}"> <i class='bx bx-box'></i>
 					<span class="links_name">Admistrar Producto</span>
-			</a>
-			<li><a href="#"> <i class='bx bx-grid-alt'></i> <span
-					class="links_name">Dashboard</span>
-			</a></li>
+				</a>
+			<li><a href="#"> <i class='bx bx-grid-alt'></i> <span class="links_name">Dashboard</span>
+				</a></li>
 
 			</li>
-			<li><a th:href="@{/admincate}" class="active"> <i
-					class='bx bx-list-ul'></i> <span class="listadocategorias">Administrar
+			<li><a th:href="@{/admincate}" class="active"> <i class='bx bx-list-ul'></i> <span
+						class="listadocategorias">Administrar
 						categorias</span>
-			</a></li>
+				</a></li>
 
-			<li><a th:href="@{/estadisticas}"> <i
-					class='bx bx-pie-chart-alt-2'></i> <span class="links_name">Estadisticas</span>
-			</a></li>
+			<li><a th:href="@{/estadisticas}"> <i class='bx bx-pie-chart-alt-2'></i> <span
+						class="links_name">Estadisticas</span>
+				</a></li>
 
 
-			<li class="log_out"><a th:href="@{/}"> <i
-					class='bx bx-log-out'></i> <span class="links_name">Log out</span>
-			</a></li>
+			<li class="log_out"><a th:href="@{/}"> <i class='bx bx-log-out'></i> <span class="links_name">Log out</span>
+				</a></li>
 		</ul>
 	</div>
 	<section class="home-section">
@@ -91,28 +90,20 @@
 							<tr>
 								<th>ID</th>
 								<th>Nombre</th>
-								<th>Editar</th>
 								<th>Eliminar</th>
 							</tr>
 							<tr th:each="cat:${categorias}">
 								<td class="details" th:text="${cat.id_categoria}"></td>
 								<td th:text="${cat.nombre}"></td>
-								<td >
-
-								<div class="botoneditarc">
-									<a href="#">Editar</a>
-								</div>
 								
-								</td>
-								<td >
-
-								<div class="botoneliminarc">
-									<a href="#">Eliminar </a>
-								</div>
+								<td>
+									<div class="botoneliminarc">
+											<a th:href="@{/deleteCatego/{id}(id=${cat.id_categoria})}">Eliminar</a>
+									</div>
 
 								</td>
 							</tr>
-							
+
 						</table>
 
 					</div>
@@ -121,16 +112,17 @@
 					</div>
 				</div>
 
-				<form class="top-sales box" th:action="@{/insertarCategoria}" th:object="${categor}" method="post">
+				<form class="top-sales box" th:action="@{/manipuleCatego}" th:object="${categor}" method="post">
 					<div>
-						<div class="title">Agregar categoría</div>
+						<div class="title">Editar o agregar categoría</div>
 						<ul class="top-sales-details">
 							<li>
 
 
 								<div class="name">
-									<label for="name"></label> 
-									<input th:field="*{id_categoria}" type="text" placeholder="ID Categoría" name="idcategoria" id="idcat_input" required>
+									<label for="name"></label>
+									<input th:field="*{id_categoria}" type="text" placeholder="ID Categoría"
+										name="idcategoria" id="idcat_input" required>
 								</div> <br> <br>
 							</li>
 							<li>
@@ -138,9 +130,11 @@
 
 
 								<div class="name">
-									<label for="name"></label> 
-									<input th:field="*{nombre}" type="text" placeholder="Nombre categoría" name="nombre" id="nombrecat_input" required> <br> <br>
-									<textarea th:field="*{descripcion}" rows="5" cols="50" placeholder="Descripcion" name="descripcion" id="descripcat_input" required></textarea>
+									<label for="name"></label>
+									<input th:field="*{nombre}" type="text" placeholder="Nombre categoría" name="nombre"
+										id="nombrecat_input" required> <br> <br>
+									<textarea th:field="*{descripcion}" rows="5" cols="50" placeholder="Descripcion"
+										name="descripcion" id="descripcat_input" required></textarea>
 
 								</div> <br>
 
@@ -152,8 +146,8 @@
 							<li>
 
 								<div type=submit class="botonagregarc">
-								<input type="submit" value="Agregar" id="form_button" />
-								
+									<input type="submit" name="Agregar" value="Agregar" id="form_button" />
+									<input type="submit" name="Editar" value="Editar" id="form_button" />
 								</div>
 							</li>
 
@@ -166,16 +160,16 @@
 	</section>
 
 	<script>
-   let sidebar = document.querySelector(".sidebar");
-let sidebarBtn = document.querySelector(".sidebarBtn");
-sidebarBtn.onclick = function() {
-  sidebar.classList.toggle("active");
-  if(sidebar.classList.contains("active")){
-  sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
-}else
-  sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-}
- </script>
+		let sidebar = document.querySelector(".sidebar");
+		let sidebarBtn = document.querySelector(".sidebarBtn");
+		sidebarBtn.onclick = function () {
+			sidebar.classList.toggle("active");
+			if (sidebar.classList.contains("active")) {
+				sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+			} else
+				sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+		}
+	</script>
 
 
 
@@ -190,4 +184,5 @@ sidebarBtn.onclick = function() {
 
 
 </body>
+
 </html>

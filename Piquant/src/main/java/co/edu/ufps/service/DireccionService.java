@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import co.edu.ufps.model.Direccion;
 import co.edu.ufps.repository.DireccionRepo;
+import co.edu.ufps.service.interfac.IDireccionService;
 
 @Service
 public class DireccionService implements IDireccionService{

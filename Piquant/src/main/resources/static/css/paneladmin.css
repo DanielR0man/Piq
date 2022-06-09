@@ -338,6 +338,7 @@ nav .profile-details i{
   border-radius: 4px;
   text-decoration: none;
   transition: all 0.3s ease;
+  margin: 0 1em 0 1em;
 }
 .sales-boxes .box .botonagregarc input:hover{
   background:  #2AFC4D;
@@ -357,10 +358,11 @@ nav .profile-details i{
   font-weight: 380;
   border-radius: 4px;
   text-decoration: none;
-  transition: all 0.3s ease;
+  border: none;
+  transition: all 0.1s ease;
 }
 .sales-boxes .box .botoneliminarc a:hover{
-  background:  #ED0213;
+  background:  #FF5564;
 }
 
 

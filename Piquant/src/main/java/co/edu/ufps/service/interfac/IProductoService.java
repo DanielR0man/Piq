@@ -1,4 +1,4 @@
-package co.edu.ufps.service;
+package co.edu.ufps.service.interfac;
 
 import java.util.List;
 

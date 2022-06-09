@@ -14,6 +14,7 @@ public class Direccion  {
 	
 	@OneToOne(mappedBy = "direccion")
 	private Cliente cliente;
+	
 	private String descripcion;
 
 
