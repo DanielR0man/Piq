@@ -77,8 +77,8 @@
         </div>
         <div class="menu">
             <div class="menu-row">
-                <div th:each="prod:${productos}" th:style="'background-image:url(' + ${prod.img}+ ')'"  class="menu-item">
-                    <button onClick="window.alert('✔ Producto añadido al carrito ');">Añadir al carrito</button> 
+                <div th:each="prod:${productos}" th:style="'background-image:url(' + ${prod.img}+ ')'"  class="menu-item">                
+                   <button type="button" class="addProduc-button" th:id="${prod.id_producto}">Añadir al carrito</button>                                   													
                     <p th:text="${prod.nombre}"></p>
                     <p th:text="${prod.descripcion}"></p>
                     <p th:text="${prod.valor}"></p>
@@ -140,6 +140,31 @@
         </div>
     </footer>
 
+<script th:inline="javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.addProduc-button');
+    if (buttons) {
+      buttons.forEach(b => {
+        b.addEventListener('click', (event) => {
+          let itemId = b.getAttribute('id');	
+          let link = '/addProducto/';
+          console.log(link)
+          console.log('Soy el id' + itemId)
+          fetch(link + itemId)
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              console.log('Request successfully completed');
+            })
+            .catch((error) => {
+              console.error('There has been a problem while contacting server:', error);
+            });
+        });
+      });
+    }
+  });
+</script>
 
 </body>
 </html>

@@ -46,6 +46,8 @@ public class Cliente {
 	inverseJoinColumns=@JoinColumn(name="authority_id"))
 	private Set<Authority> authority;
 
+	@OneToMany(mappedBy = "cliente")
+	private List<Carrito>carritos;
 	
 
 	public Cliente() {
@@ -109,6 +111,16 @@ public class Cliente {
 
 
 	
+
+
+	public List<Carrito> getCarritos() {
+		return carritos;
+	}
+
+
+	public void setCarritos(List<Carrito> carritos) {
+		this.carritos = carritos;
+	}
 
 
 	public String getDocumento() {

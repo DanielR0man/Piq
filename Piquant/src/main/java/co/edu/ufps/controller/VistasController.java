@@ -1,22 +1,30 @@
 package co.edu.ufps.controller;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.edu.ufps.model.Authority;
+import co.edu.ufps.model.Carrito;
 import co.edu.ufps.model.Categoria;
 import co.edu.ufps.model.Cliente;
 import co.edu.ufps.model.Direccion;
 import co.edu.ufps.model.Producto;
+import co.edu.ufps.service.ClienteService;
+import co.edu.ufps.service.interfac.ICarritoService;
 import co.edu.ufps.service.interfac.ICategoriaService;
+import co.edu.ufps.service.interfac.IClienteService;
 import co.edu.ufps.service.interfac.IProductoService;
 
 @Controller
@@ -29,6 +37,12 @@ public class VistasController {
 	@Autowired
 	private ICategoriaService categoriaService;
 
+	@Autowired
+	private ICarritoService carritoService;
+	
+	@Autowired
+	private IClienteService clienteService;
+	
 	@GetMapping({"/home","/"})
 	public String inicio() {
 		return "index";
@@ -84,7 +98,26 @@ public class VistasController {
 	}
 	
 	@GetMapping("/carrito")
-	public String carrito() {
+	public String carrito(Model model, HttpServletRequest request) {
+		String user=request.getUserPrincipal().getName();
+		Cliente cliente= clienteService.findByCorreo(user).orElse(null);
+		System.err.println(cliente.toString());
+		List <Carrito>carritos= cliente.getCarritos();
+		System.err.println("carritos que tengo" + cliente.getCarritos().get(1).getProductos().get(0).getNombre());
+		Carrito carrito=null;
+		try {
+			carrito = carritos.get(carritos.size()-1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.err.println(carrito.getId()+"El carrio es");
+		List<Producto>productos= carrito.getProductos();
+		System.err.println("El producto 1 es" + productos.get(0).getNombre());
+	
+		if(cliente!=null && carrito!=null) {
+			model.addAttribute("productos",productos);
+			System.err.println("Si entro");
+		}
 		
 		return "carrito";
 	}

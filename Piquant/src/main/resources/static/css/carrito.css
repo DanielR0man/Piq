@@ -38,7 +38,7 @@
 .tftable td {
 	font-size:12px;
 	border-width: 1px;
-	padding: 8px;border-style: solid;
+	border-style: solid;
 	border-color: #686767;
 	text-align:center;
 
@@ -49,12 +49,9 @@
 
 
 .total{
-		padding: 180px;
-
-align-content: right;
-align-items: right;
-
-
+	
+	align-content: right;
+	align-items: right;
 }
 
 .imglogoborrar{
@@ -67,8 +64,8 @@ align-items: right;
 
 .imgproducto{
 
-	width: 80px;
-	height: 80px;
+	width: 150px;
+	height: 150px;
 
 }
 
