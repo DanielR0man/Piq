@@ -29,23 +29,30 @@
             </div>
             <hr>
             <div class="header-body">
-                <div class="header-banner-navbar">
-                    <div class="header-banner-navbar-left">
-                        <img src="img/icons/logo.png">
-                           <a th:href="@{/}">
-                            <p>Inicio</p>
-                        </a>
-                         <a th:href="@{/menu}">
-                            <p>Menu</p>
-                        </a>
-                    </div>
-                    <div class="header-banner-navbar-right">
-                        <img src="img/icons/ico_user.svg">
-                         <a th:href="@{/formularioIngresar}">
-                            <p>Iniciar sesion</p>
-                        </a>
-                    </div>
-                </div>
+               <div class="header-banner-navbar">
+					<div class="header-banner-navbar-left">
+						<img src="img/icons/logo.png">
+						<a th:href="@{/}">
+							<p>Inicio</p>
+						</a>
+						<a th:href="@{/menu}">
+							<p>Menu</p>
+						</a>
+					</div>
+					<div class="header-banner-navbar-right">
+						<img src="img/icons/ico_user.svg">
+						<div sec:authorize="isAnonymous()">
+							<a th:href="@{/menu}">
+							<p>Iniciar sesion </p>
+						</a>
+						</div>
+						<div sec:authorize="!isAnonymous()">
+							<form th:action="@{/logout}" method="post">
+							<input type="submit" value="Cerrar Sesion" />
+						</form>
+						</div>
+					</div>
+				</div>
                 <div class="header-banner">
                     <div class="header-banner-text">
                         <p class="header-banner-title">NUESTRO MENU</p>

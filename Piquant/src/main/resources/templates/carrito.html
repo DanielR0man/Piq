@@ -44,7 +44,16 @@
 					</div>
 					<div class="header-banner-navbar-right">
 						<img src="img/icons/ico_user.svg">
-						<p>Cerrar sesion</p>
+						<div sec:authorize="isAnonymous()">
+							<a th:href="@{/menu}">
+							<p>Iniciar sesion </p>
+						</a>
+						</div>
+						<div sec:authorize="!isAnonymous()">
+							<form th:action="@{/logout}" method="post">
+							<input type="submit" value="Cerrar Sesion" />
+						</form>
+						</div>
 					</div>
 				</div>
 			</div>
