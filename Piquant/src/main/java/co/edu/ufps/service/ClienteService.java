@@ -56,4 +56,10 @@ public class ClienteService implements IClienteService{
 		return clienteRepo.findByCorreo(correo);
 	}
 
+	@Override
+	public void update(Cliente cliente) {
+		// TODO Auto-generated method stub
+		clienteRepo.save(cliente);
+	}
+
 }

@@ -1,6 +1,7 @@
 package co.edu.ufps.controller;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -32,73 +33,91 @@ import co.edu.ufps.service.interfac.IClienteService;
 import co.edu.ufps.service.interfac.IDireccionService;
 import co.edu.ufps.service.interfac.IProductoService;
 
-
 @Controller
 @RequestMapping
 public class ClienteController {
-	
-	
+
 	@Autowired
-	private  IClienteService clienteService;
-	
+	private IClienteService clienteService;
+
 	@Autowired
 	private IDireccionService direccionService;
-	
-	
+
 	@Autowired
 	private IAuthorityService authorityservice;
-	
+
 	@Autowired
 	private ICarritoService carritoService;
-	
+
 	@Autowired
 	private IProductoService productoService;
-	
+
 	@PostMapping("/register/save")
 	public String registerSave(@ModelAttribute Cliente cliente, @ModelAttribute Direccion direccion) {
 		direccionService.insertar(direccion);
 		cliente.setDireccion(direccion);
-		Set<Authority>authoritys=new HashSet();
-		Authority authority= authorityservice.findAuthority(2l);
+		Set<Authority> authoritys = new HashSet();
+		Authority authority = authorityservice.findAuthority(2l);
 		authoritys.add(authority);
 		System.err.println(authoritys.toString());
 		cliente.setAuthority(authoritys);
 		clienteService.insertar(cliente);
 		return "redirect:/";
 	}
-	
+
 	@GetMapping("/addProducto/{id}")
 	@ResponseStatus(value = HttpStatus.OK)
-	public void addProducto(@PathVariable("id") Integer id) {
+	public void addProducto(@PathVariable("id") Integer id,HttpServletRequest request) throws Exception{
 		System.err.println("La id es" + id);
 		System.err.println("El producto es" + productoService.findProducto(id));
 		Producto producto=productoService.findProducto(id);
-		List<Carrito>carritos=carritoService.findAll();
-		Carrito carrito=carritos.get(carritos.size()-1);
+		Cliente cliente=clienteService.findByCorreo(request.getUserPrincipal().getName()).orElse(null);
+		Carrito carrito=null;
+		for (Carrito carritoAux : cliente.getCarritos()) {
+			if (carritoAux.isActivo()) {
+				carrito=carritoAux;
+			}
+		}
 		carrito.getProductos().add(producto);
 		carritoService.insertar(carrito);
-		
-		
 	}
-	
 	@GetMapping("/loginPass")
 	public String loginPass(HttpServletRequest request) {
-		Carrito carrito= new Carrito();
-		String user=request.getUserPrincipal().getName();
+
+		Carrito carrito = new Carrito();
+		String user = request.getUserPrincipal().getName();
 		System.err.println("El correo es" + user);
-		Cliente cliente=clienteService.findByCorreo(user).orElse(null);
-		carrito.setCliente(cliente);
-		carritoService.insertar(carrito);
+		Cliente cliente = clienteService.findByCorreo(user).orElse(null);
+		Set<Authority>auth=cliente.getAuthority();
+		for (Authority authority : auth) {
+			if (authority.getId().equals(1L)) {
+				return "redirect:/adminproduc";
+			}
+		}
+		
+		
+		if (cliente.getCarritos().isEmpty()) {
+			carrito.setCliente(cliente);
+			carrito.setActivo(true);
+			carritoService.insertar(carrito);
+			return "redirect:/";
+		}
+		for (Carrito carritos : cliente.getCarritos()) {
+			if (!carritos.isActivo()) {
+				carrito.setCliente(cliente);
+				carrito.setActivo(true);
+				carritoService.insertar(carrito);
+			}
+		}
 		System.err.println("Si paso");
 		return "redirect:/";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	@PostMapping("/calcularTotal")
+	public Model calcularT(Model model) {
+		
+		
+		return model;
+	}
+
 }

@@ -8,12 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
   let suma=777;
 	
     if (cantidades && valores) {
-        
+        	
+        	try{
             cantidades.item(0).onchange = () => {
             console.log(valores.item(0).value * cantidades.item(0).value);
 			total.item(0).innerHTML = valores.item(0).value * cantidades.item(0).value;   					
             }
-            
+            }
+            catch(error){console.log(error)}
             try{
              cantidades.item(1).onchange = () => {
             console.log(valores.item(1).value * cantidades.item(1).value);

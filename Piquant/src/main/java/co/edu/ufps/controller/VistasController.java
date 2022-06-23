@@ -67,7 +67,6 @@ public class VistasController {
 	public String menu(Model model) {
 		List<Producto>productos= productoSerive.findAll();
 		model.addAttribute("productos",productos);
-		System.out.println(productos.toString());
 		return "menu";
 	}
 	
@@ -98,25 +97,20 @@ public class VistasController {
 	}
 	
 	@GetMapping("/carrito")
-	public String carrito(Model model, HttpServletRequest request) {
+	public String carrito(Model model, HttpServletRequest request) throws Exception{
 		String user=request.getUserPrincipal().getName();
 		Cliente cliente= clienteService.findByCorreo(user).orElse(null);
-		System.err.println(cliente.toString());
 		List <Carrito>carritos= cliente.getCarritos();
-		System.err.println("carritos que tengo" + cliente.getCarritos().get(1).getProductos().get(0).getNombre());
 		Carrito carrito=null;
 		try {
 			carrito = carritos.get(carritos.size()-1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			return "carrito";
 		}
-		System.err.println(carrito.getId()+"El carrio es");
 		List<Producto>productos= carrito.getProductos();
-		System.err.println("El producto 1 es" + productos.get(0).getNombre());
 	
 		if(cliente!=null && carrito!=null) {
 			model.addAttribute("productos",productos);
-			System.err.println("Si entro");
 		}
 		
 		return "carrito";

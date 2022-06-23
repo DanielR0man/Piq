@@ -11,4 +11,5 @@ public interface IClienteService {
 	public Cliente findCliente(Integer id_cliente);
 	public void delete(Integer id_cliente);
 	public Optional<Cliente> findByCorreo(String correo);
+	public void update(Cliente cliente);
 }

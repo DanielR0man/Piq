@@ -31,6 +31,8 @@ public class Carrito {
 	private Cliente cliente;
 	
 
+	private boolean activo;
+	
 	public Carrito() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -66,6 +68,21 @@ public class Carrito {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
+
+	@Override
+	public String toString() {
+		return "Carrito [id=" + id + ", productos=" + productos + ", cliente=" + cliente + ", activo=" + activo + "]";
+	}
+	
+	
 
 	
 }

@@ -34,6 +34,8 @@ public class Cliente {
 	@OneToMany(mappedBy = "cliente")
 	private List<Compra>compras;
 	
+	
+	
 	private String clave;
 	
 	private String celular;
