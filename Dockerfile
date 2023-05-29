@@ -1,9 +1,9 @@
 FROM amazoncorretto:11-alpine-jdk AS build
-RUN apk add --no-cache gradle
+RUN apk add --no-cache maven
 COPY . /app
 WORKDIR /app
-RUN gradle build
+RUN mvn clean package
 
 FROM amazoncorretto:11-alpine-jdk
-COPY --from=build /app/build/libs/*.jar app.jar
+COPY --from=build /app/target/*.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
