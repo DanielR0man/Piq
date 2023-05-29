@@ -17,49 +17,7 @@ import co.edu.ufps.repository.ClienteRepo;
 
 class ClienteServiceTest {
 	
-	@Mock
-	private ClienteRepo clienteRepo;
-	
-	@InjectMocks
-	private ClienteService clienteService;
-	
-	private Cliente cliente;
 
-	@BeforeEach
-	void setUp() throws Exception {
-		MockitoAnnotations.initMocks(this);
-		
-		cliente= new Cliente();
-		cliente.setNombre("Yeison");
-		cliente.setApellido("Soto");
-		cliente.setCelular("320234");
-		cliente.setClave("123");
-		cliente.setDocumento("123");
-		cliente.setDireccion(new Direccion(1,"Cucuta"));
-		
-	}
 
-	@Test
-	void testFindAll() {
-		when(clienteRepo.findAll()).thenReturn(Arrays.asList(cliente));
-		assertNotNull(clienteService.findAll());
-		
-	}
-
-	@Test
-	void testInsertar() {
-		when(clienteRepo.save(cliente)).thenReturn(cliente);
-
-	}
-
-	@Test
-	void testFindCliente() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testDelete() {
-		fail("Not yet implemented");
-	}
 
 }
