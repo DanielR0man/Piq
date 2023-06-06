@@ -2,7 +2,7 @@
 FROM maven:3.8.4-openjdk-11-slim
 
 # Directorio de trabajo en el contenedor
-WORKDIR /.
+WORKDIR .
 
 # Copia el archivo pom.xml para descargar las dependencias
 COPY pom.xml .
