@@ -9,11 +9,11 @@
 
 a{
     text-decoration: none;
-    color: #fff;
+    color: #ffffff;
 }
 body{
-    background-color: #EFF5FB;
-    color: #5C5C5C;
+    background-color: #f6c016;
+    color: #ffffff;
 
     
 }
@@ -29,14 +29,14 @@ body{
 }
 
 .header-container{
-    background-color: #141415;
+    background-color: #000000;
     
 }
 
 .header-container hr{
     margin-top: 0.5em;
     border: none;
-    border-top: 2px dashed #323234;
+    border-top: 2px dashed #f6c016;
 }
 
 .header-body{
@@ -138,11 +138,11 @@ body{
 }
 
 .container-body-index{
-    width: 70%;
+    width: 80%;
     display: flex;
     margin: 0 auto;
     top:-5em;
-    padding: 3em 1em 3em 1em;
+    padding: 3em 1em 3em 1em;color: #030303;
     background-color: #fff;
     position: relative;
    
@@ -202,7 +202,7 @@ body{
     align-items: flex-start;
     width: 70%;
     margin: 3em auto;
-    
+    color: #030303;
     
 }
 .body-aboutus h1{
@@ -218,7 +218,7 @@ body{
 .container-contact-child{
     display: flex;
     justify-content: space-around;
-    
+    color: #030303;
 
 }
 .container-contact-info{

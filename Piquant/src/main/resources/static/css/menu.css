@@ -17,7 +17,7 @@ a{
 }
 
 .header-container{
-    background-color: #141415;
+    background-color: #030303;
     
 }
 
@@ -119,6 +119,7 @@ a{
 }
 
 .menu-container{
+    background-color: #ffc233;
     margin-top: 5em;
     display: grid;
     grid-template-columns: 25% 66%;
